@@ -23,17 +23,17 @@ include('adminnav.php');
 
 <div class="container">
     <div class="col-md-8 col-md-offset-2">
-        <form action="<?=base_url()?>products/update_product" method="post">
-            <div class="imagegroup">
-                <?php
-                $imagelinks = (explode(', ', $product['image_link']));
-                foreach($imagelinks as $link){
-                    if ($link !==""){
-                        echo '<img src="'.base_url().$link.'" class="img-rounded col-sm-6" >';
-                    }
+        <div class="imagegroup" style="display: inline-block;">
+            <?php
+            $imagelinks = (explode(', ', $product['image_link']));
+            foreach($imagelinks as $link){
+                if ($link !==""){
+                    echo '<img src="'.base_url().$link.'" class="img-rounded col-sm-6" >';
                 }
-                ?>
-            </div>
+            }
+            ?>
+        </div>
+        <form action="<?=base_url()?>products/update_product" method="post">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" id="name" name="name" value="<?=$product['product_name']?>" readonly>

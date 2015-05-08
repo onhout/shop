@@ -12,6 +12,10 @@ class Product extends CI_Model
         return $this->db->query("SELECT products.id, products.name AS product_name, description, quantity, price, image_link, categories.name AS category_name FROM products JOIN products_categories ON products.id = products_categories.product_id JOIN categories ON categories.id = products_categories.category_id WHERE products.id = ?", array($product_id))->row_array();
     }
 
+    public function get_category_product_junction(){
+        return $this->db->query("SELECT * FROM products_categories") ->result_array();
+    }
+
     public function add_product($product, $category)
     {
         $productname = $product['name'];
