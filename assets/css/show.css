@@ -1,0 +1,60 @@
+.container{
+	width: 970px;
+	margin: 0 auto;
+}
+
+.header{
+	width: 910px;
+	height: 50px;
+	background-color: lightgrey;
+}
+
+#brand{
+	width: 200px;
+	display:inline-block;
+	margin-right: 550px;
+}
+
+#cart_number{
+	display: inline-block;	
+}
+
+#images{
+
+	display: inline-block;
+	vertical-align: top;
+}
+
+.thumb_nails img{
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+}
+
+#description{
+	width: 595px;
+	height: 400px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#buy{
+	margin-left: 700px;
+}
+
+.product{
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	margin: 5px;
+}
+
+.product img{
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+}
+
+.product p{
+	text-align: center;	
+}
