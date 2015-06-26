@@ -18,10 +18,12 @@ include('nav.php');
             <div class="leftnav" style="margin-top: 20px;">
                 <h4 class="text-center">Categories</h4>
                 <ul class="nav nav-pills nav-stacked">
-                    <li role="presentation" class="active"><a href="#">All <span class="badge pull-right"><?= count($products)?></span></a></li>
                     <?php
+                    echo ($currentCategory == 'all')? '<li role="presentation" class="active"><a href="'.base_url().'products/all/1">All <span class="badge pull-right">'.count($this->product->get_all_products()).'</span></a></li>':
+                    '<li role="presentation"><a href="'.base_url().'products/all/1">All <span class="badge pull-right">'.count($this->product->get_all_products()).'</span></a></li>';
                         foreach($categories as $category){
-                            echo '<li role="presentation"><a href="#">'.$category['name'].'<span class="badge pull-right">';
+                            echo ($currentCategory == $category['name'])?'<li role="presentation" class="active"><a href="'.base_url().'products/'.$category['name'].'/1">'.$category['name'].'<span class="badge pull-right">':
+                                '<li role="presentation"><a href="'.base_url().'products/'.$category['name'].'/1">'.$category['name'].'<span class="badge pull-right">';
                             $num = 0;
                             foreach($categoriesJunction as $junction){
                                 if ($category['id'] == $junction['category_id']){
@@ -55,18 +57,18 @@ include('nav.php');
             <nav>
                 <ul class="pagination">
                     <li>
-                        <a href="<?=base_url().'products/'; echo ($pagenum-1==0)?1:($pagenum-1)?>" aria-label="Previous">
+                        <a href="<?=base_url().'products/'; echo $currentCategory.'/'; echo ($pagenum-1==0)?1:($pagenum-1)?>" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
                     <?php for ($i=0; $i<$pages; $i++){
-                        echo ($pagenum == ($i+1))?'<li class="active"><a href="'.base_url().'products/'.($i+1).'">'.($i+1).'</a></li>':
-                            '<li><a href="'.base_url().'products/'.($i+1).'">'.($i+1).'</a></li>';
+                        echo ($pagenum == ($i+1))?'<li class="active"><a href="'.base_url().'products/'.$currentCategory.'/'.($i+1).'">'.($i+1).'</a></li>':
+                            '<li><a href="'.base_url().'products/'.$currentCategory.'/'.($i+1).'">'.($i+1).'</a></li>';
 
                     }
                     ?>
                     <li>
-                        <a href="<?=base_url().'products/'; echo ($pagenum+1>$pages)?$pagenum:($pagenum+1)?>" aria-label="Next">
+                        <a href="<?=base_url().'products/'; echo $currentCategory.'/'; echo ($pagenum+1>$pages)?$pagenum:($pagenum+1)?>" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>

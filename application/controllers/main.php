@@ -2,28 +2,39 @@
 
 class main extends CI_Controller{
     public function index(){
-        redirect('/products/1');
+        redirect('/products/all/1');
     }
 
-    public function show_products($currentpage){
+    public function show_products($categories, $currentpage){
         $laka['categories'] = $this->product->get_categories();
         $laka['products'] = $this->product->get_all_products();
+        foreach ($laka['categories'] as $category){
+            if ($category['name'] == $categories){
+                $currentCategoryID = $category['id'];
+            }
+        }
+
+        $laka['categoriesJunction'] = $this->product->get_category_product_junction();
+        if ($categories == 'all'){
+            $laka['currentCategory'] = 'all';
+            $laka['products'] = $this->product->get_all_products();
+        } else {
+            $laka['products'] = [];
+            foreach ($laka['categoriesJunction'] as $cata){
+                if ($cata['category_id'] == $currentCategoryID){
+                    array_push($laka['products'], $this->product->get_product($cata['product_id']));
+                }
+            }
+            $laka['currentCategory'] = $categories;
+        }
+
         $itemsPerPage = 12;
         $laka['totalCount'] = count($laka['products']);
         $laka['pages'] = ceil($laka['totalCount']/$itemsPerPage);
         $laka['startingCount'] = ($currentpage-1)*$itemsPerPage;
         $laka['currentCount'] = $currentpage*$itemsPerPage;
         $laka['pagenum'] = $currentpage;
-        $laka['categoriesJunction'] = $this->product->get_category_product_junction();
 
         $this->load->view('index', $laka);
     }
-
-    public function products_as_categories($categories){
-        $laka['categories'] = $this->product->get_categories();
-        $laka['products'] = $this->product->get_all_products();
-        $laka['categoriesJunction'] = $this->product->get_category_product_junction();
-        $this->load->view('index', $laka);
-    }
-
 }

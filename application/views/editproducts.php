@@ -36,7 +36,7 @@ include('adminnav.php');
         <form action="<?=base_url()?>products/update_product" method="post">
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" name="name" value="<?=$product['product_name']?>" readonly>
+                <input type="text" class="form-control" id="name" name="name" value="<?=$product['name']?>" readonly>
             </div>
             <div class="form-group">
                 <label for="description">Description:</label>

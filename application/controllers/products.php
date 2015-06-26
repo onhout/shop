@@ -114,7 +114,7 @@ class Products extends CI_Controller {
         if ($this->session->userdata['admin_level'] == 9){
             $product = $this->product->get_product($id);
             $this->product->remove_product($id);
-            $this->deleteFolder('assets/image/'.$product['product_name']);
+            $this->deleteFolder('assets/image/'.$product['name']);
             redirect(base_url().'/admin/products');
         } else {
             redirect('/');
