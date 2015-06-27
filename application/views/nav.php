@@ -13,6 +13,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php ?></title>
     <link rel="stylesheet" href="<?=base_url()?>/assets/bower_components/bootstrap/dist/css/bootstrap.css">
     <script src="<?=base_url()?>/assets/bower_components/jquery/dist/jquery.js"></script>
@@ -41,7 +42,21 @@
                 <li <?php /*echo (uri_string()=='admin/users')?'class="active"':'class=""'*/?>><a href="<?/*=base_url()*/?>admin/users">Users</a> </li>
             </ul>-->
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Shopping Cart(#)</a></li>
+                <?php
+                if ($this->session->userdata('admin_level')==9){
+                    echo '<li><a href="'.base_url().'admin/products">Edit</a></li>';
+                    echo '<li><a href="'.base_url().'dashboard">Dashboard</a>';
+                    echo '<li><a href="'.base_url().'users/logoff">Log Off</a></li>';
+                } else if ($this->session->userdata('admin_level')==1){
+                    echo '<li><a href="#">Shopping Cart(#)</a></li>';
+                    echo '<li><a href="'.base_url().'users/logoff">Log Off</a></li>';
+                }else {
+                    echo '<li><a href="#">Shopping Cart(#)</a></li>';
+                    echo '<li><a href="'.base_url().'register">Register</a></li>';
+                    echo '<li><a href="'.base_url().'login">Log in</a></li>';
+                }
+                ?>
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

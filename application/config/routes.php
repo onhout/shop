@@ -2,6 +2,7 @@
 
 $route['default_controller'] = "main";
 $route['login'] = "users/login_route";
+$route['register'] = "users/register_route";
 $route['admin/orders'] = "users/orders_route";
 $route['admin/products'] = "users/product_route";
 $route['admin/products/add'] = "users/add_product_route";

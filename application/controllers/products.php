@@ -35,7 +35,6 @@ class Products extends CI_Controller {
     }
 
     public function add_new_product(){
-        $this->session->set_userdata('admin_level', 9);
         $this->sanitize(); //form submission rules
         if($this->form_validation->run()==false){
             $this->session->set_flashdata('errors', validation_errors()); //flash data to display errors

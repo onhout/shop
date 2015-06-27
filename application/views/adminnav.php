@@ -13,6 +13,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php ?></title>
     <link rel="stylesheet" href="<?=base_url()?>/assets/bower_components/bootstrap/dist/css/bootstrap.css">
     <script src="<?=base_url()?>/assets/bower_components/jquery/dist/jquery.js"></script>
@@ -39,9 +40,10 @@
                 <li <?php echo (uri_string()=='admin/orders')?'class="active"':'class=""'?>><a href="<?=base_url()?>admin/orders">Orders</a></li>
                 <li <?php echo (uri_string()=='admin/products')?'class="active"':'class=""'?>><a href="<?=base_url()?>admin/products">Products</a></li>
                 <li <?php echo (uri_string()=='admin/users')?'class="active"':'class=""'?>><a href="<?=base_url()?>admin/users">Users</a> </li>
+                <li><a href="<?=base_url()?>">Store</a> </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Logoff</a></li>
+                <li><a href="<?=base_url()?>users/logoff">Logoff</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

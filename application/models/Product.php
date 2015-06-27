@@ -1,7 +1,7 @@
 <?php
 class Product extends CI_Model
 {
-	
+
 	public function get_all_products()
     {
         return $this->db->query("SELECT * FROM products")->result_array();
