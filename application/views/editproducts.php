@@ -67,7 +67,7 @@ include('adminnav.php');
             </div>
             <div class="col-xs-6 form-group">
                 <label for="price">Price:</label>
-                <input type="number" id="price" name="price" class="form-control" value="<?=$product['price']?>">
+                <input type="text" id="price" name="price" class="form-control" value="<?=$product['price']?>">
             </div>
             <div class="form-group">
                 <label for="uploadimage">Upload Images</label>

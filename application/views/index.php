@@ -47,7 +47,7 @@ include('nav.php');
                     echo '<div class="col-sm-3">';
                     echo '<div class="thumbnail">';
                     $imagelink = explode(', ', $products[$i]['image_link']);
-                    echo '<img src="'.base_url().$imagelink[0].'" style="height:150px;">';
+                    echo '<a href="'.base_url().'show/'.$products[$i]['id'].'"><img src="'.base_url().$imagelink[0].'" style="height:150px;"></a>';
                     echo '<h4>'.$products[$i]['name'].'<span style="position: absolute; top:5px; left:20px; background-color:white">$'.$products[$i]['price'].'</span></h4>';
                     echo '</div>';
                     echo '</div>';
@@ -64,7 +64,6 @@ include('nav.php');
                     <?php for ($i=0; $i<$pages; $i++){
                         echo ($pagenum == ($i+1))?'<li class="active"><a href="'.base_url().'products/'.$currentCategory.'/'.($i+1).'">'.($i+1).'</a></li>':
                             '<li><a href="'.base_url().'products/'.$currentCategory.'/'.($i+1).'">'.($i+1).'</a></li>';
-
                     }
                     ?>
                     <li>
@@ -74,6 +73,28 @@ include('nav.php');
                     </li>
                 </ul>
             </nav>
+            <!-- Modal -->
+            <!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            <script>
+                                var data = <?/*=json_encode($products)*/?>
+                            </script>
+                            <?/*print_r($products)*/?>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+
         </div>
     </div>
 </div>

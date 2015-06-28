@@ -80,6 +80,7 @@ class Users extends CI_Controller{
                 "password" => sha1($this->input->post('password'))
             ];
             $loggedInUser = $this->usermodel->login($user);
+            $this->session->set_userdata('userID', $loggedInUser['id']);
             $this->session->set_userdata('admin_level', $loggedInUser['admin_level']);
             if ($loggedInUser['admin_level']==9){
                 redirect('/admin/products');

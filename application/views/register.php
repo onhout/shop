@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Registration Page</title>
     <link rel="stylesheet" href="<?=base_url()?>/assets/bower_components/bootstrap/dist/css/bootstrap.css">
     <script src="<?=base_url()?>/assets/bower_components/jquery/dist/jquery.js"></script>
@@ -27,7 +28,7 @@
                 <label for="password">Confirm Password:</label>
                 <input type="password" name="confpw" class="form-control" placeholder="Confirm Password">
             </div>
-            <button type="submit" class="btn btn-primary pull-right">Login</button>
+            <button type="submit" class="btn btn-primary pull-right">Register</button>
             <?=$this->session->flashdata('errors')?>
         </form>
     </div>

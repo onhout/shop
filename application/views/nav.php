@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="<?=base_url()?>/assets/bower_components/bootstrap/dist/css/bootstrap.css">
     <script src="<?=base_url()?>/assets/bower_components/jquery/dist/jquery.js"></script>
     <script src="<?base_url()?>/assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<!--    <script src="--><?//base_url()?><!--/assets/js/script.js"></script>-->
 
 </head>
 <body>
@@ -48,10 +49,10 @@
                     echo '<li><a href="'.base_url().'dashboard">Dashboard</a>';
                     echo '<li><a href="'.base_url().'users/logoff">Log Off</a></li>';
                 } else if ($this->session->userdata('admin_level')==1){
-                    echo '<li><a href="#">Shopping Cart(#)</a></li>';
+                    echo '<li><a href="'.base_url().'cart">Shopping Cart('.count($this->session->userdata('cart')).')</a></li>';
                     echo '<li><a href="'.base_url().'users/logoff">Log Off</a></li>';
                 }else {
-                    echo '<li><a href="#">Shopping Cart(#)</a></li>';
+                    echo '<li><a href="'.base_url().'cart">Shopping Cart('.count($this->session->userdata('cart')).')</a></li>';
                     echo '<li><a href="'.base_url().'register">Register</a></li>';
                     echo '<li><a href="'.base_url().'login">Log in</a></li>';
                 }

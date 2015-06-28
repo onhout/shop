@@ -6,6 +6,9 @@ class main extends CI_Controller{
     }
 
     public function show_products($categories, $currentpage){
+        if(!$this->session->userdata('cart')){
+            $this->session->set_userdata('cart', []);
+        }
         $laka['categories'] = $this->product->get_categories();
         $laka['products'] = $this->product->get_all_products();
         foreach ($laka['categories'] as $category){

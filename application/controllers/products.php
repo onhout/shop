@@ -13,20 +13,10 @@ class Products extends CI_Controller {
 		$this->load->view('index');
 	}
 
-	public function show()
-	{
-		$this->load->view('show');
-	}
-
-	public function getAll()
-	{
-		
-	}
-
-	public function carts()
-	{
-		$this->load->view('carts');
-	}
+    public function show_product($id){
+        $laka['product'] = $this->product->get_product($id);
+        $this->load->view('showproduct', $laka);
+    }
 
     public function edit_product_route($id){
         $laka['product'] = $this->product->get_product($id);

@@ -3,6 +3,8 @@
 $route['default_controller'] = "main";
 $route['login'] = "users/login_route";
 $route['register'] = "users/register_route";
+$route['show/(:num)'] = "products/show_product/$1";
+$route['cart'] = "carts/cart";
 $route['admin/orders'] = "users/orders_route";
 $route['admin/products'] = "users/product_route";
 $route['admin/products/add'] = "users/add_product_route";
