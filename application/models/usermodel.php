@@ -7,6 +7,7 @@
  */
 
 class Usermodel extends CI_Model{
+
     public function login($user){
         $query = "SELECT * FROM ecommerce.users WHERE email=? AND password=?";
         return $this->db->query($query, $user)->row_array();
@@ -31,5 +32,10 @@ class Usermodel extends CI_Model{
     public function checkUser($user){
         $email = $user['email'];
         return $this->db->query("SELECT email from ecommerce.users WHERE email='$email'")->row_array()?false:true;
+    }
+
+    public function get_user($userID){
+        $query = "SELECT * FROM users WHERE id = '$userID'";
+        return $this->db->query($query)->row_array();
     }
 }

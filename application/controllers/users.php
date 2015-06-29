@@ -11,7 +11,8 @@ class Users extends CI_Controller{
         if ($this->session->userdata('admin_level')!=9){
             redirect('/');
         }else {
-            $this->load->view('orders_view');
+            $laka['orders'] = $this->order->get_all_orders();
+            $this->load->view('orders_view', $laka);
         }
     }
 
@@ -40,7 +41,16 @@ class Users extends CI_Controller{
         } else {
             $this->load->view('usersview');
         }
+    }
 
+    public function dashboard($userID){
+        if ($this->session->userdata('userID')==$userID || $this->session->userdata('admin_level') == 9){
+            $laka['userInfo'] = $this->usermodel->get_user($userID);
+            $laka['user_order'] = $this->order->get_user_orders($userID);
+            $this->load->view('dashboard', $laka);
+        } else {
+            redirect('/');
+        }
     }
 
     public function register_route(){
@@ -81,11 +91,12 @@ class Users extends CI_Controller{
             ];
             $loggedInUser = $this->usermodel->login($user);
             $this->session->set_userdata('userID', $loggedInUser['id']);
+            $this->session->set_userdata('userName', $loggedInUser['name']);
             $this->session->set_userdata('admin_level', $loggedInUser['admin_level']);
             if ($loggedInUser['admin_level']==9){
                 redirect('/admin/products');
             } else{
-                redirect('/dashboard');
+                redirect('/users/dashboard/'.$this->session->userdata('userID'));
             }
         }
     }

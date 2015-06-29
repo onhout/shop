@@ -49,7 +49,7 @@ class Carts extends CI_Controller
                     $this->session->set_userdata('cart', $cartItems);
                 }
             }
-        } else {
+        } else if ($this->input->post('itemQuantity')>0) {
             for ($i=0; $i<count($cartItems); $i++){
                 if ($cartItems[$i]['itemID'] == $this->input->post('itemID')){
                     $cartItems[$i]['quantity'] = $this->input->post('itemQuantity');
@@ -57,6 +57,15 @@ class Carts extends CI_Controller
                 }
             }
         }
+
         redirect('/cart');
+    }
+
+    public function checkout(){
+        if (!$this->session->userdata['userID']){
+            redirect('/login');
+        }else{
+
+        }
     }
 }

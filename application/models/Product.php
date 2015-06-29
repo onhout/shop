@@ -23,8 +23,8 @@ class Product extends CI_Model
         $last_product_id = $this->get_last_productID($productname);
 
         if (!$last_product_id){
-            $query = "INSERT INTO products (name, description, quantity, price, image_link) VALUES (?,?,?,?,?)";
-            $values = array($product['name'], $product['description'], $product['quantity'], $product['price'], $product['image_link']);
+            $query = "INSERT INTO products (name, description, quantity, qty_sold, price, image_link) VALUES (?,?,?,?,?,?)";
+            $values = array($product['name'], $product['description'], $product['quantity'], 0, $product['price'], $product['image_link']);
             $this->db->query($query, $values);
             $last_product_id = $this->get_last_productID($productname);
         }

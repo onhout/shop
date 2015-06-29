@@ -26,7 +26,7 @@ include('nav.php');
                 <p class="text-center">$<?=$product['price']?></p>
                 <form action="<?=base_url()?>carts/add_to_cart" method="post">
                     <input type="hidden" value="<?=$product['id']?>" name="itemID">
-                    <div class="form-group">
+                    <div class="form-group text-center">
                         <label for="quantity">Quantity: </label>
                         <select id="quantity" class="form-control-static" name="quantity">
                             <? for($i=0; $i<10; $i++){

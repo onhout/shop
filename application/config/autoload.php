@@ -10,6 +10,6 @@ $autoload['config'] = array();
 
 $autoload['language'] = array();
 
-$autoload['model'] = array('usermodel', 'product');
+$autoload['model'] = array('usermodel', 'product', 'order');
 
 //end of autoload.php

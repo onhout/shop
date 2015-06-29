@@ -33,6 +33,13 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="<?=base_url()?>">E-Commerce</a>
+            <?
+                if($this->session->userdata('userName')){
+                    echo '<p class="navbar-text">Hello '.$this->session->userdata('userName').'!</p>';
+                } else {
+                    echo '<p class="navbar-text">Welcome!</p>';
+                }
+            ?>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -46,9 +53,10 @@
                 <?php
                 if ($this->session->userdata('admin_level')==9){
                     echo '<li><a href="'.base_url().'admin/products">Edit</a></li>';
-                    echo '<li><a href="'.base_url().'dashboard">Dashboard</a>';
+                    echo '<li><a href="'.base_url().'users/dashboard/'.$this->session->userdata('userID').'">Dashboard</a></li>';
                     echo '<li><a href="'.base_url().'users/logoff">Log Off</a></li>';
                 } else if ($this->session->userdata('admin_level')==1){
+                    echo '<li><a href="'.base_url().'users/dashboard/'.$this->session->userdata('userID').'">Dashboard</a></li>';
                     echo '<li><a href="'.base_url().'cart">Shopping Cart('.count($this->session->userdata('cart')).')</a></li>';
                     echo '<li><a href="'.base_url().'users/logoff">Log Off</a></li>';
                 }else {

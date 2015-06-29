@@ -25,9 +25,9 @@ include('adminnav.php');
         <div class="col-md-3 col-md-offset-6">
             <select class="form-control" name="status">
                 <option value="showall">Show All</option>
-                <option value="orderin">Order In</option>
-                <option value="processed">Processed</option>
-                <option value="shipped">Shipped</option>
+                <option value="Processing">Processing</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Canceled">Canceled</option>
             </select>
         </div>
     </div>
@@ -37,15 +37,22 @@ include('adminnav.php');
                 <thead>
                 <tr>
                     <th>Order ID</th>
-                    <th>Name</th>
+                    <th>Customer Email</th>
                     <th>Date</th>
-                    <th>Billing Address</th>
-                    <th>Total</th>
                     <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php /*forloop*/?>
+                <?php
+                foreach($orders as $order){
+                    echo '<tr>';
+                    echo '<td><a href="'.base_url().'orders/show/'.$order['id'].'">'.$order['id'].'</a></td>';
+                    echo '<td><a href="'.base_url().'users/dashboard/'.$order['userID'].'">'.$order['email'].'</a></td>';
+                    echo '<td>'.$order['created_at'].'</td>';
+                    echo '<td>'.$order['status'].'</td>';
+                    echo '</tr>';
+                }
+                ?>
                 </tbody>
             </table>
         </div>

@@ -23,7 +23,7 @@ include('nav.php');
             <tr>
                 <th>Info</th>
                 <th>Price</th>
-                <th>Quantity</th>
+                <th class="text-center">Quantity</th>
             </tr>
             </thead>
             <tbody>
@@ -37,7 +37,7 @@ include('nav.php');
                     <p>
                     <form class="form-inline pull-right" action="carts/update_cart_item" method="post">
                         <input type="hidden" value="'.$items['id'].'" name="itemID">
-                        <input class="text-center form-control" value="'.$items['cartQuantity'].'" name="itemQuantity">
+                        <input type="number" class="text-center form-control" value="'.$items['cartQuantity'].'" name="itemQuantity">
                         <button class="btn btn-info" type="submit">Update</button>
                     </form>
                     </p>
@@ -50,6 +50,9 @@ include('nav.php');
         </table>
         <hr>
         <h2 class="text-right">Total: $<?=$total?></h2>
-        <button class="btn btn-primary pull-right">Checkout</button>
+        <form action="orders/add_order" method="post">
+            <button type="submit" class="btn-lg btn btn-primary pull-right">Order!</button>
+        </form>
+
     </div>
 </div>
