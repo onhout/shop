@@ -23,7 +23,7 @@ include('adminnav.php');
 
 <div class="container">
     <div class="col-md-8 col-md-offset-2">
-        <div class="imagegroup" style="display: inline-block;">
+        <div class="imagegroup col-md-12" style="display: inline-block;">
             <?php
             $imagelinks = (explode(', ', $product['image_link']));
             foreach($imagelinks as $link){
