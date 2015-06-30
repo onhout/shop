@@ -25,7 +25,7 @@ class Order extends CI_Model{
     }
 
     public function get_all_orders(){
-        $query = "SELECT orders.id, users.email, users.id as userID , orders.created_at, orders.status FROM orders JOIN users WHERE orders.user_id=users.id";
+        $query = "SELECT orders.id, users.email, users.id as userID , orders.created_at, orders.status FROM orders JOIN users ON orders.user_id=users.id";
         return $this->db->query($query)->result_array();
     }
 

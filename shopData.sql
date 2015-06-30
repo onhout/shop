@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `myclassa_ecommerce` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `myclassa_ecommerce`;
+CREATE DATABASE  IF NOT EXISTS `ecommerce` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `ecommerce`;
 -- MySQL dump 10.13  Distrib 5.6.19, for osx10.7 (i386)
 --
--- Host: localhost    Database: myclassa_ecommerce
+-- Host: localhost    Database: ecommerce
 -- ------------------------------------------------------
 -- Server version	5.5.42
 
@@ -205,6 +205,7 @@ CREATE TABLE `users` (
   `admin_level` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
+  `address` longtext,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -215,7 +216,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (5,'admin','admin@admin.com','ffaaafbdee1de041310096e1ff171618a2049f6e',9,'2015-06-26 20:17:49','2015-06-26 20:17:49'),(6,'guest','guest@guest.com','ffaaafbdee1de041310096e1ff171618a2049f6e',1,'2015-06-26 20:42:19','2015-06-26 20:42:19'),(7,'Peter Liu','onhout@gmail.com','ffaaafbdee1de041310096e1ff171618a2049f6e',1,'2015-06-28 21:31:31','2015-06-28 21:31:31');
+INSERT INTO `users` VALUES (5,'admin','admin@admin.com','ffaaafbdee1de041310096e1ff171618a2049f6e',9,'2015-06-26 20:17:49','2015-06-26 20:17:49','2401 Broadway'),(6,'guest','guest@guest.com','e93e656e4144cd4a59f7d8d886bdb3b59b8f8ae9',1,'2015-06-26 20:42:19','2015-06-26 20:42:19','Checking'),(7,'Peter Liu','onhout@gmail.com','ffaaafbdee1de041310096e1ff171618a2049f6e',1,'2015-06-28 21:31:31','2015-06-28 21:31:31',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -228,4 +229,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-28 22:42:56
+-- Dump completed on 2015-06-29 22:30:07
