@@ -24,7 +24,7 @@ class Orders extends CI_Controller
         }
         if (!$this->session->userdata('userID')){
             redirect('/login');
-        } else if (empty($this->session->userdata('cart'))){
+        } else if (!($this->session->userdata('cart'))){
             redirect('/cart');
         }else if ($userAddress == NULL) {
             redirect('/users/dashboard/'.$this->session->userdata('userID'));
