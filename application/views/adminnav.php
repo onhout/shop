@@ -16,8 +16,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php ?></title>
     <link rel="stylesheet" href="<?=base_url()?>/assets/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="<?=base_url()?>/assets/bower_components/bootstrap-material-design/dist/css/material-fullpalette.min.css">
     <script src="<?=base_url()?>/assets/bower_components/jquery/dist/jquery.js"></script>
     <script src="<?base_url()?>/assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="<?base_url()?>/assets/bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
 
 </head>
 <body>

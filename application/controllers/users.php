@@ -7,15 +7,6 @@ class Users extends CI_Controller{
 
     }
 
-    public function orders_route(){
-        if ($this->session->userdata('admin_level')!=9){
-            redirect('/');
-        }else {
-            $laka['orders'] = $this->order->get_all_orders();
-            $this->load->view('orders_view', $laka);
-        }
-    }
-
     public function login_route(){
         $this->load->view('login');
     }
@@ -31,15 +22,21 @@ class Users extends CI_Controller{
     }
 
     public function add_product_route(){
-        $laka['categories'] = $this->product->get_categories();
-        $this->load->view('newproduct', $laka);
+        if ($this->session->userdata('admin_level')==9){
+            $laka['categories'] = $this->product->get_categories();
+            $this->load->view('newproduct', $laka);
+        } else {
+            redirect('/');
+        }
+
     }
 
     public function users_route(){
         if ($this->session->userdata('admin_level')!=9){
             redirect('/');
         } else {
-            $this->load->view('usersview');
+            $laka['users'] = $this->usermodel->get_all_users();
+            $this->load->view('usersview', $laka);
         }
     }
 
@@ -48,6 +45,38 @@ class Users extends CI_Controller{
             $laka['userInfo'] = $this->usermodel->get_user($userID);
             $laka['user_order'] = $this->order->get_user_orders($userID);
             $this->load->view('dashboard', $laka);
+        } else {
+            redirect('/');
+        }
+    }
+
+    public function update_user($userID){
+        $this->form_validation->set_rules('confpw', 'Confirm Password', 'matches[password]');
+        if ($this->form_validation->run()==FALSE){
+            $this->session->set_flashdata('errors', validation_errors());
+            redirect('/users/dashboard/'.$userID);
+        }
+        if($this->session->userdata('userID')==$userID || $this->session->userdata('admin_level')==9){
+            $user = [
+                'name' => $this->input->post('name'),
+                'email' => $this->input->post('email'),
+                'address' => $this->input->post('address'),
+                'password' => ''
+            ];
+            if ($this->input->post('password')){
+                $user['password'] = sha1($this->input->post('password'));
+            }
+            $this->usermodel->update_user($userID, $user);
+            redirect('/users/dashboard/'.$userID);
+        } else {
+            redirect('/');
+        }
+    }
+
+    public function remove_user($userID){
+        if ($this->session->userdata('admin_level')==9){
+            $this->usermodel->remove_user($userID);
+            redirect('admin/users');
         } else {
             redirect('/');
         }

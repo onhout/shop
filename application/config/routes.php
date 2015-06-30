@@ -7,7 +7,7 @@ $route['show/(:num)'] = "products/show_product/$1";
 $route['cart'] = "carts/cart";
 
 //ORDER ROUTES
-$route['admin/orders'] = "users/orders_route";
+$route['admin/orders'] = "orders/orders_route";
 $route['admin/orders/edit/(:num)'] = "orders/edit_order/$1";
 $route['admin/orders/delete/(:num)'] = "orders/delete_order/$1";
 $route['orders/show/(:num)'] = "orders/show_order/$1";

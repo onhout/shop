@@ -38,4 +38,24 @@ class Usermodel extends CI_Model{
         $query = "SELECT * FROM users WHERE id = '$userID'";
         return $this->db->query($query)->row_array();
     }
+
+    public function get_all_users(){
+        $query = "SELECT * FROM users";
+        return $this->db->query($query)->result_array();
+    }
+
+    public function update_user($userID, $user){
+        if ($user['password']){
+            $query = "UPDATE users SET users.name=?, email=?, address=?, password=? WHERE users.id = '$userID'";
+            $this->db->query($query, $user);
+        }else {
+            $query = "UPDATE users SET users.name=?, email=?, address=? WHERE users.id = '$userID'";
+            $this->db->query($query, $user);
+        }
+    }
+
+    public function remove_user($userID){
+        $query = "DELETE FROM users WHERE users.id='$userID'";
+        $this->db->query($query);
+    }
 }

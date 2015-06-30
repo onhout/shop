@@ -37,7 +37,7 @@ class main extends CI_Controller{
         $laka['startingCount'] = ($currentpage-1)*$itemsPerPage;
         $laka['currentCount'] = $currentpage*$itemsPerPage;
         $laka['pagenum'] = $currentpage;
-
+        //echo json_encode($laka);
         $this->load->view('index', $laka);
     }
 }

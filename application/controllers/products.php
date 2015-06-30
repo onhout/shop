@@ -19,9 +19,14 @@ class Products extends CI_Controller {
     }
 
     public function edit_product_route($id){
-        $laka['product'] = $this->product->get_product($id);
-        $laka['categories'] = $this->product->get_categories();
-        $this->load->view('editproducts', $laka);
+        if ($this->session->userdata('admin_level')==9){
+            $laka['product'] = $this->product->get_product($id);
+            $laka['categories'] = $this->product->get_categories();
+            $this->load->view('editproducts', $laka);
+        } else {
+            redirect('/');
+        }
+
     }
 
     public function add_new_product(){

@@ -16,8 +16,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php ?></title>
     <link rel="stylesheet" href="<?=base_url()?>/assets/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="<?=base_url()?>/assets/bower_components/bootstrap-material-design/dist/css/material-fullpalette.min.css">
     <script src="<?=base_url()?>/assets/bower_components/jquery/dist/jquery.js"></script>
     <script src="<?base_url()?>/assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="<?base_url()?>/assets/bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
 <!--    <script src="--><?//base_url()?><!--/assets/js/script.js"></script>-->
 
 </head>
@@ -57,10 +59,10 @@
                     echo '<li><a href="'.base_url().'users/logoff">Log Off</a></li>';
                 } else if ($this->session->userdata('admin_level')==1){
                     echo '<li><a href="'.base_url().'users/dashboard/'.$this->session->userdata('userID').'">Dashboard</a></li>';
-                    echo '<li><a href="'.base_url().'cart">Shopping Cart('.count($this->session->userdata('cart')).')</a></li>';
+                    echo '<li><a href="'.base_url().'cart"><i class="mdi-action-shopping-cart"></i><span class="badge">'.count($this->session->userdata('cart')).'</span></a></li>';
                     echo '<li><a href="'.base_url().'users/logoff">Log Off</a></li>';
                 }else {
-                    echo '<li><a href="'.base_url().'cart">Shopping Cart('.count($this->session->userdata('cart')).')</a></li>';
+                    echo '<li><a href="'.base_url().'cart"><i class="mdi-action-shopping-cart"></i><span class="badge">'.count($this->session->userdata('cart')).'</span></a></li>';
                     echo '<li><a href="'.base_url().'register">Register</a></li>';
                     echo '<li><a href="'.base_url().'login">Log in</a></li>';
                 }

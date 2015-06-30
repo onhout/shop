@@ -28,13 +28,13 @@ include('nav.php');
                     <input type="hidden" value="<?=$product['id']?>" name="itemID">
                     <div class="form-group text-center">
                         <label for="quantity">Quantity: </label>
-                        <select id="quantity" class="form-control-static" name="quantity">
+                        <select id="quantity" class="form-control" name="quantity">
                             <? for($i=0; $i<10; $i++){
                                 echo '<option value="'.($i+1).'">'.($i+1).'</option>';
                             }?>
                         </select>
                         <hr>
-                        <button class="btn btn-primary center-block form-control">Add</button>
+                        <button class="btn btn-primary form-control">Add</button>
                     </div>
                 </form>
             </div>
