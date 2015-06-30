@@ -74,7 +74,7 @@ include('adminnav.php');
                 <input type="file" id="uploadimage" name="userfile[]" multiple="multiple">
             </div>
             <button type="submit" class="btn btn-primary">Update Product</button>
-            <button type="reset" class="btn btn-default pull-right">Cancel</button>
+            <button type="reset" onclick="history.back()" class="btn btn-default pull-right">Cancel</button>
         </form>
     </div>
 </div>
