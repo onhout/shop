@@ -33,7 +33,7 @@ include('adminnav.php');
     </div>
     <div class="row">
         <div class="col-md-12">
-            <table class="table">
+            <table class="table table-responsive">
                 <thead>
                 <tr>
                     <th>Order ID</th>
