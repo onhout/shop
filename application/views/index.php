@@ -21,7 +21,7 @@ include('nav.php');
                     <?
                     $random_array = [];
                     for ($i =0; $i<5; $i++){
-                        $random = rand(0, count($all_products));
+                        $random = rand(0, count($all_products)-1);
                         for($j=0; $j<count($random_array); $j++){
                             if ($random_array[$j]==$random){
                                 $random=rand(0, count($all_products));

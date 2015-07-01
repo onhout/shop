@@ -70,19 +70,22 @@
                             </div>
                         </form>
                         <?php
-                        echo ($currentCategory == 'all')? '<li role="presentation" class="active"><a href="'.base_url().'products/all/1">All <span class="badge pull-right">'.count($this->product->get_all_products()).'</span></a></li>':
-                            '<li role="presentation"><a href="'.base_url().'products/all/1">All <span class="badge pull-right">'.count($this->product->get_all_products()).'</span></a></li>';
-                        foreach($categories as $category){
-                            echo ($currentCategory == $category['name'])?'<li role="presentation" class="active"><a href="'.base_url().'products/'.$category['name'].'/1">'.$category['name'].'<span class="badge pull-right">':
-                                '<li><a href="'.base_url().'products/'.$category['name'].'/1">'.$category['name'].'<span class="badge pull-right">';
-                            $num = 0;
-                            foreach($categoriesJunction as $junction){
-                                if ($category['id'] == $junction['category_id']){
-                                    $num++;
+                        if (strpos(uri_string(), 'products')!==false){
+                            echo ($currentCategory == 'all')? '<li role="presentation" class="active"><a href="'.base_url().'products/all/1">All <span class="badge pull-right">'.count($this->product->get_all_products()).'</span></a></li>':
+                                '<li role="presentation"><a href="'.base_url().'products/all/1">All <span class="badge pull-right">'.count($this->product->get_all_products()).'</span></a></li>';
+                            foreach($categories as $category){
+                                echo ($currentCategory == $category['name'])?'<li role="presentation" class="active"><a href="'.base_url().'products/'.$category['name'].'/1">'.$category['name'].'<span class="badge pull-right">':
+                                    '<li><a href="'.base_url().'products/'.$category['name'].'/1">'.$category['name'].'<span class="badge pull-right">';
+                                $num = 0;
+                                foreach($categoriesJunction as $junction){
+                                    if ($category['id'] == $junction['category_id']){
+                                        $num++;
+                                    }
                                 }
+                                echo $num.'</span></a></li>';
                             }
-                            echo $num.'</span></a></li>';
                         }
+
                         ?>
                     </ul>
                 </li>
@@ -108,7 +111,7 @@
 </nav>
 <nav class="navmenu navmenu-default navmenu-fixed-left offcanvas" id="bs-example-navbar-collapse-1" role="navigation">
     <ul class="nav navmenu-nav">
-
+        <li><a href="<?base_url()?>">Store</a></li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -122,18 +125,20 @@
                     </div>
                 </form>
                 <?php
-                echo ($currentCategory == 'all')? '<li role="presentation" class="active"><a href="'.base_url().'products/all/1">All <span class="badge pull-right">'.count($this->product->get_all_products()).'</span></a></li>':
-                    '<li role="presentation"><a href="'.base_url().'products/all/1">All <span class="badge pull-right">'.count($this->product->get_all_products()).'</span></a></li>';
-                foreach($categories as $category){
-                    echo ($currentCategory == $category['name'])?'<li role="presentation" class="active"><a href="'.base_url().'products/'.$category['name'].'/1">'.$category['name'].'<span class="badge pull-right">':
-                        '<li><a href="'.base_url().'products/'.$category['name'].'/1">'.$category['name'].'<span class="badge pull-right">';
-                    $num = 0;
-                    foreach($categoriesJunction as $junction){
-                        if ($category['id'] == $junction['category_id']){
-                            $num++;
+                if (strpos(uri_string(), 'products')!==false) {
+                    echo ($currentCategory == 'all') ? '<li role="presentation" class="active"><a href="' . base_url() . 'products/all/1">All <span class="badge pull-right">' . count($this->product->get_all_products()) . '</span></a></li>' :
+                        '<li role="presentation"><a href="' . base_url() . 'products/all/1">All <span class="badge pull-right">' . count($this->product->get_all_products()) . '</span></a></li>';
+                    foreach ($categories as $category) {
+                        echo ($currentCategory == $category['name']) ? '<li role="presentation" class="active"><a href="' . base_url() . 'products/' . $category['name'] . '/1">' . $category['name'] . '<span class="badge pull-right">' :
+                            '<li><a href="' . base_url() . 'products/' . $category['name'] . '/1">' . $category['name'] . '<span class="badge pull-right">';
+                        $num = 0;
+                        foreach ($categoriesJunction as $junction) {
+                            if ($category['id'] == $junction['category_id']) {
+                                $num++;
+                            }
                         }
+                        echo $num . '</span></a></li>';
                     }
-                    echo $num.'</span></a></li>';
                 }
                 ?>
             </ul>

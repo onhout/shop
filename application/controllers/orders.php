@@ -41,7 +41,8 @@ class Orders extends CI_Controller
     }
 
     public function show_order($orderID){
-        if ($this->session->userdata('admin_level')==9){
+        $order = $this->order->get_order($orderID);
+        if ($this->session->userdata('admin_level')==9 || $order[0]['user_id'] == $this->session->userdata('userID')){
             $laka['order'] = $this->order->get_order($orderID);
             $laka['orderID'] = $orderID;
             $this->load->view('showorder', $laka);
