@@ -58,3 +58,5 @@
 .product p{
 	text-align: center;	
 }
+
+.carousel-inner > img { height: 300px; position: relative; overflow:hidden; }

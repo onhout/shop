@@ -5,53 +5,92 @@ include('nav.php');
 
 <div class="container">
     <div class="row">
-        <div class="col-md-2 thumbnail">
-            <form>
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-                    <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon1">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Go!</button>
-                </span>
-                </div>
-            </form>
-            <div class="leftnav" style="margin-top: 20px;">
-                <h4 class="text-center">Categories</h4>
-                <ul class="nav nav-pills nav-stacked">
-                    <?php
-                    echo ($currentCategory == 'all')? '<li role="presentation" class="active"><a href="'.base_url().'products/all/1">All <span class="badge pull-right">'.count($this->product->get_all_products()).'</span></a></li>':
-                    '<li role="presentation"><a href="'.base_url().'products/all/1">All <span class="badge pull-right">'.count($this->product->get_all_products()).'</span></a></li>';
-                        foreach($categories as $category){
-                            echo ($currentCategory == $category['name'])?'<li role="presentation" class="active"><a href="'.base_url().'products/'.$category['name'].'/1">'.$category['name'].'<span class="badge pull-right">':
-                                '<li role="presentation"><a href="'.base_url().'products/'.$category['name'].'/1">'.$category['name'].'<span class="badge pull-right">';
-                            $num = 0;
-                            foreach($categoriesJunction as $junction){
-                                if ($category['id'] == $junction['category_id']){
-                                    $num++;
-                                }
+        <div class="col-md-12">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <?
+                    $random_array = [];
+                    for ($i =0; $i<5; $i++){
+                        $random = rand(0, count($all_products));
+                        for($j=0; $j<count($random_array); $j++){
+                            if ($random_array[$j]==$random){
+                                $random=rand(0, count($all_products));
                             }
-                            echo $num.'</span></a></li>';
                         }
+                        array_push($random_array, $random);
+                    }
+                    echo '<div class="item active">';
+                    echo '<a href="'.base_url().'/show/'.$all_products[$random_array[0]]['id'].'">';
+                    echo '<img src="'.base_url().explode(', ', $all_products[$random_array[0]]['image_link'])[0].'">';
+                    echo '</a>';
+                    echo '<div class="carousel-caption"><h2 class="text-info">'.$all_products[$random_array[0]]['name'].' ONLY $'.$all_products[$random_array[0]]['price'].'!</h2></div>';
+                    echo '</div>';
+                    echo '<div class="item">';
+                    echo '<a href="'.base_url().'/show/'.$all_products[$random_array[1]]['id'].'">';
+                    echo '<img src="'.base_url().explode(', ', $all_products[$random_array[1]]['image_link'])[0].'" alt="...">';
+                    echo '</a>';
+                    echo '<div class="carousel-caption"><h2 class="text-info">'.$all_products[$random_array[1]]['name'].' ONLY $'.$all_products[$random_array[1]]['price'].'!</h2></div>';
+                    echo '</div>';
+                    echo '<div class="item">';
+                    echo '<a href="'.base_url().'/show/'.$all_products[$random_array[2]]['id'].'">';
+                    echo '<img src="'.base_url().explode(', ', $all_products[$random_array[2]]['image_link'])[0].'" alt="...">';
+                    echo '</a>';
+                    echo '<div class="carousel-caption"><h2 class="text-info">'.$all_products[$random_array[2]]['name'].' ONLY $'.$all_products[$random_array[2]]['price'].'!</h2></div>';
+                    echo '</div>';
+                    echo '<div class="item">';
+                    echo '<a href="'.base_url().'/show/'.$all_products[$random_array[3]]['id'].'">';
+                    echo '<img src="'.base_url().explode(', ', $all_products[$random_array[3]]['image_link'])[0].'" alt="...">';
+                    echo '</a>';
+                    echo '<div class="carousel-caption"><h2 class="text-info">'.$all_products[$random_array[3]]['name'].' ONLY $'.$all_products[$random_array[3]]['price'].'!</h2></div>';
+                    echo '</div>';
+                    echo '<div class="item">';
+                    echo '<a href="'.base_url().'/show/'.$all_products[$random_array[4]]['id'].'">';
+                    echo '<img src="'.base_url().explode(', ', $all_products[$random_array[4]]['image_link'])[0].'" alt="...">';
+                    echo '</a>';
+                    echo '<div class="carousel-caption"><h2 class="text-info">'.$all_products[$random_array[4]]['name'].' ONLY $'.$all_products[$random_array[4]]['price'].'!</h2></div>';
+                    echo '</div>';
                     ?>
-                </ul>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
         </div>
-        <div class="col-md-9">
-
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
             <?php
             function determingitemcount($start, $end, $current){
                 return ($end-$start < 12)?$end:$current;
             }
             echo '<div class="row">';
-                for ($i=$startingCount; $i<determingitemcount($startingCount, $totalCount, $currentCount); $i++){
-                    echo '<div class="col-sm-3">';
-                    echo '<div class="thumbnail">';
-                    $imagelink = explode(', ', $products[$i]['image_link']);
-                    echo '<a href="'.base_url().'show/'.$products[$i]['id'].'"><img src="'.base_url().$imagelink[0].'" style="height:150px;"></a>';
-                    echo '<h4>'.$products[$i]['name'].'<span style="position: absolute; top:5px; left:20px; background-color:white">$'.$products[$i]['price'].'</span></h4>';
-                    echo '</div>';
-                    echo '</div>';
-                }
+            for ($i=$startingCount; $i<determingitemcount($startingCount, $totalCount, $currentCount); $i++){
+                echo '<div class="col-sm-3">';
+                echo '<div class="thumbnail">';
+                $imagelink = explode(', ', $products[$i]['image_link']);
+                echo '<a href="'.base_url().'show/'.$products[$i]['id'].'"><img src="'.base_url().$imagelink[0].'" style="height:150px;"></a>';
+                echo '<h4>'.$products[$i]['name'].'<span style="position: absolute; top:5px; left:20px; background-color:white">$'.$products[$i]['price'].'</span></h4>';
+                echo '</div>';
+                echo '</div>';
+            }
             echo '</div>';
             ?>
             <nav>
@@ -73,6 +112,11 @@ include('nav.php');
                     </li>
                 </ul>
             </nav>
+
+        </div>
+
+
+
             <!-- Modal -->
             <!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
@@ -95,6 +139,5 @@ include('nav.php');
                 </div>
             </div>-->
 
-        </div>
     </div>
 </div>

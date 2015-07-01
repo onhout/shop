@@ -10,6 +10,7 @@ class main extends CI_Controller{
             $this->session->set_userdata('cart', []);
         }
         $laka['categories'] = $this->product->get_categories();
+        $laka['all_products'] = $this->product->get_all_products();
         $laka['products'] = $this->product->get_all_products();
         foreach ($laka['categories'] as $category){
             if ($category['name'] == $categories){
