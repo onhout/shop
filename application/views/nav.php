@@ -111,7 +111,7 @@
 </nav>
 <nav class="navmenu navmenu-default navmenu-fixed-left offcanvas" id="bs-example-navbar-collapse-1" role="navigation">
     <ul class="nav navmenu-nav">
-        <li><a href="<?base_url()?>">Store</a></li>
+        <li><a href="<?=base_url()?>">Store</a></li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
             <ul class="dropdown-menu">
