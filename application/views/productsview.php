@@ -38,7 +38,6 @@ include('adminnav.php');
                     <th>ID</th>
                     <th>Name</th>
                     <th>Inventory Count</th>
-                    <th>Quantity Sold</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -46,12 +45,11 @@ include('adminnav.php');
                     <?php
                     foreach($products as $product){
                         echo '<tr>';
-                        echo '<td><img src="'.base_url().substr($product['image_link'], 0, strpos($product['image_link'], ',')).'" width="75px"></td>';
+                        echo '<td><a href="'.base_url().'admin/products/edit/'.$product['id'].'"><img src="'.base_url().substr($product['image_link'], 0, strpos($product['image_link'], ',')).'" width="75px"></a></td>';
                         echo '<td>'.$product['id'].'</td>';
                         echo '<td>'.$product['name'].'</td>';
                         echo '<td>'.$product['quantity'].'</td>';
-                        echo '<td>0</td>';
-                        echo '<td><a href="'.base_url().'admin/products/edit/'.$product['id'].'">Edit</a> | <a href="'.base_url().'admin/products/remove/'.$product['id'].'">Remove</a></td>';
+                        echo '<td><a href="'.base_url().'admin/products/remove/'.$product['id'].'">Remove</a></td>';
                         echo '</tr>';
                     }
                     ?>
