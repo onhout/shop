@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="<?=base_url()?>/assets/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="<?=base_url()?>/assets/bower_components/bootstrap-material-design/dist/css/material-fullpalette.min.css">
     <link rel="stylesheet" href="<?=base_url()?>/assets/bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" href="<?=base_url()?>/assets/css/main.css">
     <script src="<?=base_url()?>/assets/bower_components/jquery/dist/jquery.js"></script>
     <script src="<?=base_url()?>/assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="<?=base_url()?>/assets/bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
@@ -29,7 +30,7 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
