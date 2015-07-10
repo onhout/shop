@@ -69,10 +69,11 @@ include('adminnav.php');
                 <label for="price">Price:</label>
                 <input type="text" id="price" name="price" class="form-control" value="<?=$product['price']?>">
             </div>
-            <div class="form-group">
+            <p><i>Update images function not yet implemented</i></p>
+            <!--<div class="form-group">
                 <label for="uploadimage">Upload Images</label>
                 <input type="file" id="uploadimage" name="userfile[]" multiple="multiple">
-            </div>
+            </div>-->
             <button type="submit" class="btn btn-primary">Update Product</button>
             <button type="reset" onclick="history.back()" class="btn btn-default pull-right">Cancel</button>
         </form>
